@@ -25,7 +25,7 @@
  *
  * Default value is: 1 for LED_OFF
 */
-#define STARTUP_KNOB_LED_COLOR 6         // LED_OFF
+#define STARTUP_KNOB_LED_COLOR 6         // LED_BLUE
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE  // Keeps the LED state in Marlin Mode
 
 /**
@@ -114,7 +114,7 @@
  *          SPANISH, FRENCH, PORTUGUESE, ITALIAN, POLISH, SLOVAK, DUTCH,
  *          HUNGARIAN, TURKISH, GREEK, SLOVENIAN, CATALAN, TRAD_CHINESE,
  */
-#define DEFAULT_LANGUAGE GERMAN
+#define DEFAULT_LANGUAGE ENGLISH
 
 /**
  * To add/flash a second language copy the required "language_xx.ini" file from
