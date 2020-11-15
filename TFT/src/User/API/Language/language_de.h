@@ -153,14 +153,14 @@
     #define STRING_LOADING                "Lade ..."
     #define STRING_POWER_FAILED           "Druck fortsetzen?" //Question Sign
     #define STRING_CONTINUE               "fortsetzen"
-    #define STRING_CANCEL                 "Abbruch" //Cancel Sign
+    #define STRING_CANCEL                 "\u088F Abbruch" //Cancel Sign
     #define STRING_ADJUST_TITLE           "Touchscreen kalibrieren"
     #define STRING_ADJUST_INFO            "roten Punkt antippen"
     #define STRING_ADJUST_OK              "erfolgreich kalibriert"
     #define STRING_ADJUST_FAILED          "Kalibrierung fehlgeschlagen, erneut versuchen."
     #define STRING_WARNING                "Warnung" //Exclamation Sign
     #define STRING_STOP_PRINT             "Druck abbrechen?"
-    #define STRING_CONFIRM                "OK" //Confirm Sign
+    #define STRING_CONFIRM                "\u088E OK" //Confirm Sign
     #define STRING_TFTSD                  "TFT SD"
     #define STRING_READ_TFTSD_ERROR       "TFT SD Lesefehler!"
     #define STRING_TFTSD_INSERTED         "SD-Karte eingesteckt!"

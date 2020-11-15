@@ -114,7 +114,7 @@
  *          SPANISH, FRENCH, PORTUGUESE, ITALIAN, POLISH, SLOVAK, DUTCH,
  *          HUNGARIAN, TURKISH, GREEK, SLOVENIAN, CATALAN, TRAD_CHINESE,
  */
-#define DEFAULT_LANGUAGE ENGLISH
+#define DEFAULT_LANGUAGE GERMAN
 
 /**
  * To add/flash a second language copy the required "language_xx.ini" file from
@@ -130,6 +130,7 @@
 /**
  * The duration and frequency for the UI feedback sound.
  * Set these to 0 to disable audio feedback in the LCD menus.
+ * 
  * Only valid for SERIAL_TSC LCD MODE and if BUZZER_PIN is set or available.
  *
  * Note: Test audio output with the G-Code:
