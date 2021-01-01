@@ -31,7 +31,7 @@
  *
  * Default value is: 1 for LED_OFF
 */
-#define STARTUP_KNOB_LED_COLOR 0         // LED_OFF
+#define STARTUP_KNOB_LED_COLOR 6         // LED_OFF
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE  // Keeps the LED state in Marlin Mode
 
 /**
@@ -52,7 +52,7 @@
  */
 #define DEFAULT_LCD_BRIGHTNESS      11  // 11: LCD_100_PERCENT - Brightness value from list
 #define DEFAULT_LCD_IDLE_BRIGHTNESS 3   // 3: LCD_10_PERCENT - Brightness value from list
-#define DEFAULT_LCD_IDLE_TIMER      0   // 0: LCD_DIM_OFF
+#define DEFAULT_LCD_IDLE_TIMER      4   // 0: LCD_DIM_OFF
 #define LCD_DIM_CUSTOM_SECONDS      600 // Custom value in seconds. Will be used if LCD_DIM_CUSTOM_SECONDS is set as idle timer.
 
 //===========================================================================
@@ -68,7 +68,7 @@
  *          6: MAGENTA,    7: YELLOW,      8: ORANGE,  9: PURPLE,   10: LIME,  11: BROWN,
  *         12: DARKBLUE,  13: DARKGREEN,  14: GRAY,   15: DARKGRAY
  */
-#define MARLIN_BKCOLOR 1
+#define MARLIN_BKCOLOR 4
 #define MARLIN_FNCOLOR 0
 
 /**
@@ -79,14 +79,14 @@
 /**
  * show banner text at the top of the TFT in Marlin Mode.
  */
-#define MARLIN_SHOW_BANNER  true //to enabled: true | to disabled: false
+#define MARLIN_SHOW_BANNER  false //to enabled: true | to disabled: false
 /**
  * Run Marlin Mode in Fullscreen
  *
  * Options:  0: Disabled. RECOMMENDED FOR TFT24
  *           1: Enabled Marlin Fullscreen mode.
  */
-#define DEFAULT_ST7920_FULLSCREEN_MODE 0 // 0: Disabled. RECOMMENDED FOR TFT24
+#define DEFAULT_ST7920_FULLSCREEN_MODE 1 // 0: Disabled. RECOMMENDED FOR TFT24
 
 /**
  * Keep Serial always On (ONLY SUPPORTED ON TFT24 V1.1, TFT35 V3.0, AND TFT28 V3.0)
@@ -97,7 +97,7 @@
  *
  * Options:  0: Disabled    1: Enabled
  */
-#define SERIAL_ALWAYS_ON 0  // Default: 0 (Disabled)
+#define SERIAL_ALWAYS_ON 1  // Default: 0 (Disabled)
 
 //===========================================================================
 //========================== Touch Mode Settings ============================
@@ -111,7 +111,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 115200
+#define BAUDRATE 500000
 
 /**
  * Default Primary Language (for Touch-Mode only)
@@ -185,12 +185,12 @@
 #define HOTEND_NUM   1    // set in 1~6
 #define EXTRUDER_NUM 1    // set in 1~6
 #define FAN_NUM      1    // set in 1~6
-#define FAN_CTRL_NUM 0    // set in 1~2
+#define FAN_CTRL_NUM 1    // set in 1~2
 #define MIXING_EXTRUDER 0 // set default 0, for mixing_extruder 1 (this option turns off autodetection of the number of extruders)
 
 #define PREHEAT_LABELS   {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND   {200,   240,    230,   170,    220,   250}
-#define PREHEAT_BED      {60,    70,     90,    50,     50,    90}
+#define PREHEAT_HOTEND   {210,   240,    230,   170,    220,   250}
+#define PREHEAT_BED      {70,    70,     90,    50,     50,    90}
 
 #define HEAT_MAX_TEMP    {275,       275,       275,       275,       275,       275,       150,    60}   //max temperature can be set
 #define HEAT_SIGN_ID     {"T0:",     "T1:",     "T2:",     "T3:",     "T4:",     "T5:",     "B:",   "C:"}
