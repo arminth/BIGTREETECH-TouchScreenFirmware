@@ -107,7 +107,7 @@
  * Options: 0: Disabled (RECOMMENDED FOR TFT24)
  *          1: Enabled
  */
-#define DEFAULT_ST7920_FULLSCREEN_MODE 0  // Default: 0
+#define DEFAULT_ST7920_FULLSCREEN_MODE 1  // Default: 0
 
 /**
  * Keep Serial always On (ONLY SUPPORTED ON TFT24 V1.1, TFT35 V3.0, AND TFT28 V3.0)
@@ -117,7 +117,7 @@
  *
  * Options: [0: Disabled, 1: Enabled]
  */
-#define SERIAL_ALWAYS_ON 0  // Default: 0
+#define SERIAL_ALWAYS_ON 1  // Default: 0
 
 /**
  * LCD/Touch Encoder
