@@ -99,7 +99,7 @@
 #define MARLIN_BANNER_TEXT "LCD12864 Emulator"  // Default: "LCD12864 Emulator"
 
 // Show banner text at the top of the TFT in Marlin Mode
-//#define MARLIN_SHOW_BANNER true  // To enabled: true | To disabled: false (Default: true)
+#define MARLIN_SHOW_BANNER false  // To enabled: true | To disabled: false (Default: true)
 
 /**
  * Run Marlin Mode in Fullscreen
