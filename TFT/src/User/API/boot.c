@@ -25,7 +25,7 @@ const char smallIconBmpName[][32]={
 //add new icons in small_icon_list.inc only
 };
 
-BMPUPDATE_STAT bmpDecode(char *bmp, u32 addr)
+BMPUPDATE_STAT bmpDecode(char *bmp, uint32_t addr)
 {
   FIL bmpFile;
   char magic[2];
@@ -217,11 +217,11 @@ void dispIconFail(uint8_t *lbl, BMPUPDATE_STAT bmpState)
   Delay_ms(1000); // give some time to the user to read failed icon name.
 }
 
-bool updateFont(char *font, u32 addr)
+bool updateFont(char *font, uint32_t addr)
 {
   uint8_t progress = 0;
   UINT rnum = 0;
-  u32 offset = 0;
+  uint32_t offset = 0;
   char buffer[128];
   FIL myfp;
   uint8_t*  tempbuf = NULL;
@@ -237,19 +237,19 @@ bool updateFont(char *font, u32 addr)
   GUI_DispString(0, 100, (uint8_t*)buffer);
   GUI_DispString(0, 140, (uint8_t*)"Updating:   %");
 
-  while(!f_eof(&myfp))
+  while (!f_eof(&myfp))
   {
     if (f_read(&myfp, tempbuf, W25QXX_SECTOR_SIZE, &rnum) != FR_OK) break;
 
     W25Qxx_EraseSector(addr + offset);
     W25Qxx_WriteBuffer(tempbuf, addr + offset, W25QXX_SECTOR_SIZE);
     offset += rnum;
-    if(progress != offset * 100 / f_size(&myfp))
+    if (progress != offset * 100 / f_size(&myfp))
     {
       progress = offset * 100 / f_size(&myfp);
       GUI_DispDec(0 + BYTE_WIDTH*9, 140, progress, 3, RIGHT);
     }
-    if(rnum !=W25QXX_SECTOR_SIZE)break;
+    if (rnum !=W25QXX_SECTOR_SIZE) break;
   }
 
   f_close(&myfp);
@@ -331,7 +331,7 @@ void scanUpdates(void)
   uint32_t cur_flash_sign[sign_count];
   W25Qxx_ReadBuffer((uint8_t*)&cur_flash_sign, FLASH_SIGN_ADDR, sizeof(cur_flash_sign));
 
-  if(mountSDCard())
+  if (mountSDCard())
   {
     if (f_dir_exists(FONT_ROOT_DIR))
     {
