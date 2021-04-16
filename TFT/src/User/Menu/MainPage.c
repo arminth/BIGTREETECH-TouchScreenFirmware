@@ -3,7 +3,7 @@
 
 void menuMain(void)
 {
-  // 1 title, ITEM_PER_PAGE items(icon+label)
+  // 1 title, ITEM_PER_PAGE items (icon + label)
   MENUITEMS mainPageItems = {
     // title
     LABEL_MAINMENU,
@@ -25,6 +25,11 @@ void menuMain(void)
   };
 
   KEY_VALUES key_num = KEY_IDLE;
+
+  if (infoSettings.rrf_macros_enable)
+  {
+    mainPageItems.items[5].label.index = LABEL_MACROS;
+  }
 
   if (infoSettings.status_screen != 1)
   {
@@ -67,7 +72,15 @@ void menuMain(void)
         break;
 
       case KEY_ICON_5:
-        infoMenu.menu[++infoMenu.cur] = menuCustom;
+        if (infoSettings.rrf_macros_enable)
+        {
+          infoFile.title[0] = 0;
+          infoMenu.menu[++infoMenu.cur] = menuCallMacro;
+        }
+        else
+        {
+          infoMenu.menu[++infoMenu.cur] = menuCustom;
+        }
         break;
 
       case KEY_ICON_6:
