@@ -35,21 +35,28 @@ void infoSettingsReset(void)
   infoSettings.list_button_color      = lcd_colors[LISTVIEW_ICON_COLOR];
   infoSettings.mesh_min_color         = lcd_colors[MESH_MIN_COLOR];
   infoSettings.mesh_max_color         = lcd_colors[MESH_MAX_COLOR];
+  infoSettings.terminal_color_scheme  = TERMINAL_COLOR_SCHEME;
 
   infoSettings.rotate_ui              = DISABLED;
   infoSettings.terminalACK            = DISABLED;
   infoSettings.persistent_info        = ENABLED;
   infoSettings.file_listmode          = ENABLED;
+  infoSettings.files_sort_by         = SORT_DATE_NEW_FIRST;
   infoSettings.ack_notification       = ACK_NOTIFICATION_STYLE;
+  infoSettings.notification_m117      = DISABLED;
+  infoSettings.emulate_m600           = EMULATE_M600;
 
 // Marlin Mode Settings
   infoSettings.mode                   = DEFAULT_LCD_MODE;
   infoSettings.serial_alwaysOn        = SERIAL_ALWAYS_ON;
   infoSettings.marlin_mode_bg_color   = lcd_colors[MARLIN_BKCOLOR];
   infoSettings.marlin_mode_font_color = lcd_colors[MARLIN_FNCOLOR];
-  infoSettings.marlin_mode_showtitle  = MARLIN_SHOW_BANNER;
   infoSettings.marlin_mode_fullscreen = MARLIN_MODE_FULLSCREEN;
+  infoSettings.marlin_mode_showtitle  = MARLIN_SHOW_BANNER;
   infoSettings.marlin_type            = LCD12864;
+
+// RRF Mode Settings
+  infoSettings.rrf_macros_enable      = 0;
 
 // Printer / Machine Settings
   infoSettings.hotend_count           = HOTEND_NUM;
@@ -79,6 +86,10 @@ void infoSettingsReset(void)
 
   infoSettings.move_speed             = 1;  // index on infoSettings.axis_speed, infoSettings.ext_speed
 
+  infoSettings.xy_offset_probing      = ENABLED;
+  infoSettings.z_raise_probing        = PROBING_Z_RAISE;
+  infoSettings.z_steppers_alignment   = DISABLED;
+
 // Power Supply Settings
   infoSettings.auto_off               = DISABLED;
   infoSettings.ps_active_high         = PS_ON_ACTIVE_HIGH;
@@ -102,13 +113,14 @@ void infoSettingsReset(void)
   infoSettings.toastSound             = ENABLED;
   infoSettings.alertSound             = ENABLED;
   infoSettings.heaterSound            = ENABLED;
+#ifdef LED_COLOR_PIN
   infoSettings.knob_led_color         = STARTUP_KNOB_LED_COLOR;
   infoSettings.knob_led_idle          = ENABLED;
+  infoSettings.neopixel_pixels        = NEOPIXEL_PIXELS;
+#endif
   infoSettings.lcd_brightness         = DEFAULT_LCD_BRIGHTNESS;
   infoSettings.lcd_idle_brightness    = DEFAULT_LCD_IDLE_BRIGHTNESS;
   infoSettings.lcd_idle_timer         = DEFAULT_LCD_IDLE_TIMER;
-  infoSettings.xy_offset_probing      = ENABLED;
-  infoSettings.z_steppers_alignment   = DISABLED;
 
 // Start, End & Cancel G-codes
   infoSettings.send_start_gcode       = DISABLED;
@@ -132,6 +144,7 @@ void infoSettingsReset(void)
     infoSettings.machine_size_min[i]  = default_size_min[i];
     infoSettings.machine_size_max[i]  = default_size_max[i];
   }
+  infoSettings.leveling_invert_y_axis = DISABLED;
 
   for (int i = 0; i < FEEDRATE_COUNT - 1 ; i++)  //xy, z
   {
@@ -155,6 +168,7 @@ void infoSettingsReset(void)
     infoSettings.preheat_temp[i]      = default_preheat_ext[i];
     infoSettings.preheat_bed[i]       = default_preheat_bed[i];
   }
+
   resetConfig();
 }
 
@@ -215,23 +229,18 @@ void setupMachine(void)
     infoMachineSettings.emergencyParser         = ENABLED;
     infoMachineSettings.autoReportSDStatus      = DISABLED;
   }
-  if (infoSettings.onboardSD == ENABLED)
-  {
-    infoMachineSettings.onboard_sd_support = ENABLED;
-  }
-  else if (infoSettings.onboardSD == DISABLED)
-  {
-    infoMachineSettings.onboard_sd_support = DISABLED;
-  }
-  if (infoSettings.longFileName == ENABLED)
-  {
-    infoMachineSettings.long_filename_support = ENABLED;
-  }
-  else if (infoSettings.longFileName == DISABLED)
-  {
-    infoMachineSettings.long_filename_support = DISABLED;
-  }
+  if (infoSettings.onboardSD != AUTO)
+    infoMachineSettings.onboard_sd_support = infoSettings.onboardSD;
+
+  if (infoSettings.longFileName != AUTO)
+    infoMachineSettings.long_filename_support = infoSettings.longFileName;
+
   mustStoreCmd("M503 S0\n");
+
+  if (infoMachineSettings.firmwareType == FW_REPRAPFW)
+  {
+    mustStoreCmd("M555 P2\n");  //  Set RRF compatibility behaves similar to 2: Marlin
+  }
 }
 
 float flashUsedPercentage(void)
