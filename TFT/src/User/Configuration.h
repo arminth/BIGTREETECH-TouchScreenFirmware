@@ -410,7 +410,7 @@
  *          3: LED_ORANGE,  4: LED_YELLOW,  5: LED_GREEN,
  *          6: LED_BLUE,    7: LED_INDIGO,  8: LED_VIOLET
 */
-#define STARTUP_KNOB_LED_COLOR 1  // Default: 1
+#define STARTUP_KNOB_LED_COLOR 6  // Default: 1
 
 // Keep the LED state in Marlin Mode
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE
